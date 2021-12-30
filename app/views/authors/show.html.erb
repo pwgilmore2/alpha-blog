@@ -1,4 +1,16 @@
-<h1>Author: <%="#{@author.first_name} #{@author.last_name}"%></h1>
+<h1><%="#{@author.first_name} #{@author.last_name}"%></h1>
 
-<h3>Biography:</h3>
-<p><%=@author.biography%></p>
+<table>
+  <tr>
+    <td><h3>Biography:</h3></td>
+    <td><p><%=@author.biography%></p></td>
+  </tr>
+<table>
+
+<table>
+  <tr>
+    <td><%= link_to 'Authors', authors_path %></td>
+    <td><%= link_to 'Edit', edit_author_path(@author) %></td>
+    <td><%= link_to 'Delete', author_path(@author), method: :delete, data: { confirm: "Are you sure?"} %></td>
+  </tr>
+<table>

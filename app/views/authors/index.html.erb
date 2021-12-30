@@ -1,4 +1,7 @@
 <h1>Authors!</h1>
+
+
+
 <table>
   <thead>
     <tr>
@@ -11,10 +14,15 @@
   <tbody>
     <% @authors.each do |author| %>
     <tr>
-      <td><%="#{author.first_name} #{author.last_name}"%></td>
-      <td><%=author.biography%></td>
-      <td>Actions</td>
+      <td><%= "#{author.first_name} #{author.last_name} "%></td>
+      <td><%= author.biography %></td>
+      <td><%= link_to 'Show', author_path(author) %>
+      <td><%= link_to 'Edit', edit_author_path(author) %></td>
+      <td><%= link_to 'Delete', author_path(author), method: :delete, data: { confirm: "Are you sure?"} %></td>
     </tr>
-    <%end%>
+    <% end %>
   </tbody>
 </table>
+
+<p><%= link_to 'New Author', new_author_path %> |
+<%= link_to 'Articles', articles_path %></p>
