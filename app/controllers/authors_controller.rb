@@ -2,7 +2,7 @@ class AuthorsController < ApplicationController
   before_action  :set_author, only: [:show, :edit, :update, :destroy]
   
   def index
-    @authors = Author.all
+    @authors = Author.paginate(page: params[:page], per_page: 5)
   end
   
   def show
@@ -17,6 +17,7 @@ class AuthorsController < ApplicationController
   
   def create
     @author = Author.new(author_params)
+    @author.user = User.first
     if @author.save
       flash[:notice] = "#{@author.first_name} was created successfully!"
       redirect_to @author
